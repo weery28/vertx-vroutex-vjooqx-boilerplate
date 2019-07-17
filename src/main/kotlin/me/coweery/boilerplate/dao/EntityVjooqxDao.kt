@@ -13,7 +13,7 @@ abstract class EntityVjooqxDao<T : Entity>(
 ) {
 
     protected abstract val table: Table<*>
-    protected val idField = table.field("id", Long::class.java)
+    protected val idField by lazy { table.field("id", Long::class.java) }
 
     fun fetchById(id: Long): Maybe<T> {
 

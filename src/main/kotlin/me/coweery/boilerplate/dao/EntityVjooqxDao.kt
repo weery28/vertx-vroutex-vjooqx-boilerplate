@@ -7,7 +7,7 @@ import io.reactivex.Single
 import io.vertx.core.json.JsonObject
 import org.jooq.Table
 
-abstract class EnityVjooqxDao<T : Entity>(
+abstract class EntityVjooqxDao<T : Entity>(
     protected val vjooqx: Vjooqx,
     protected val entityClass: Class<T>
 ) {

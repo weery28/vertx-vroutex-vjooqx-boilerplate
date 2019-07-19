@@ -46,6 +46,7 @@ abstract class EntityVjooqxDao<T : Entity>(
         return vjooqx.fetch {
             insertInto(table).set(
                 JsonObject.mapFrom(entity).map.apply { remove("id") })
+                .returning()
         }.to(entityClass)
     }
 

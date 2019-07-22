@@ -53,9 +53,9 @@ abstract class EntityVjooqxDao<T : Entity>(
     fun update(entity: T): Single<T> {
 
         val entityMap = JsonObject.mapFrom(entity).map
-        val id = entityMap.remove("id")
+        val id = entityMap.remove("id") as Long?
         return vjooqx.fetch {
-            update(table).set(entityMap).returning()
+            update(table).set(entityMap).where(idField.eq(id)).returning()
         }.to(entityClass)
     }
 }
